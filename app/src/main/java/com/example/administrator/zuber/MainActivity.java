@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.txt_title_location_railway:
                 ll_railway.setVisibility(View.VISIBLE);
-                setLocationData();
+                if (gv_location.getAdapter() == null)
+                    setLocationData();
 
                 break;
 
@@ -229,8 +230,8 @@ public class MainActivity extends AppCompatActivity {
                 if (gridAdapter.getBef_txt() != null && gridAdapter.getBef_railwayBean() != null) {
                     RailwayBean railwayBean = gridAdapter.getBef_railwayBean();
                     boolean flag = true;
-                    for (int i = 0; i < railwayBean.getStation().size(); i++) {
-                        if (userSelectBean.getStation().lastIndexOf(railwayBean.getStation().get(i)) > 0) {
+                    for (int i = 0; i <userSelectBean.getStation().size(); i++) {
+                        if (railwayBean.getStation().lastIndexOf(userSelectBean.getStation().get(i)) > 0) {
                             flag = false;
                             break;
                         }
@@ -328,5 +329,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onBack(View v) {
         finish();
+    }
+
+    public UserSelectBean getUserSelectBean() {
+        return userSelectBean;
     }
 }

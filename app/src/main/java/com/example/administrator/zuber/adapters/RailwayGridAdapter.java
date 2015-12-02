@@ -11,6 +11,8 @@ import com.example.administrator.zuber.R;
 import com.example.administrator.zuber.bean.CityBean;
 import com.example.administrator.zuber.bean.RailwayBean;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2015/12/1.
  */
@@ -57,14 +59,17 @@ public class RailwayGridAdapter extends ArrayAdapter{
             convertView = View.inflate(getContext(),resource,null);
 
         TextView txt = (TextView)convertView.findViewById(R.id.txt);
-        txt.setText(city.getRailways().get(position).getLine());
-        //选择默认
-        setUnselect(txt);
+        List<RailwayBean> railwayBeans = city.getRailways();
+        txt.setText(railwayBeans.get(position).getLine());
 
+        //默认选择
+        setUnselect(txt);
         return convertView;
     }
 
     public void setSelect(TextView txt) {
+        if (bef_txt == txt)
+            return;
         txt.setBackgroundColor(getContext().getResources().getColor(R.color.app_txt_select));
         txt.setTextColor(getContext().getResources().getColor(R.color.app_background_white));
         bef_txt = txt;

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Zuber</string>
+
+
+    <string name="select_txt_title_sex">性别</string>
+    <string name="select_txt_title_rent">租金范围</string>
+    <string name="select_txt_title_location">位置区域</string>
+    <string name="select_txt_title_time">入住时间</string>
+</resources>
